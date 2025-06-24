@@ -21,14 +21,14 @@ public class Wishlist {
             case "price":
                 Collections.sort(wishItemList);
                 break;
-            case "cathegory":
+            case "category":
                 sortByCathegory();
                 break;
             case "date":
                 sortByDate();
                 break;
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Invalid sorting method: " + sortingMethod);
         }
     }
 
@@ -44,7 +44,7 @@ public class Wishlist {
 
     public void sortByCathegory(){
         Collections.sort(wishItemList, (item1, item2) -> {
-            if (item1.getCathegory().compareTo(item2.getCathegory()) == 0){
+            if (item1.getCathegory().compareTo(item2.getCathegory()) != 0){
                 return item1.getCathegory().compareTo(item2.getCathegory());
             } else {
                 return item1.compareTo(item2);
@@ -55,7 +55,7 @@ public class Wishlist {
     public void sortByDate(){
         Collections.sort(wishItemList, (item1, item2) -> {
             if (!item1.getDate().isEqual(item2.getDate())){
-                return item1.getDate().isAfter(item2.getDate()) ? 1 : item1.getDate().isEqual(item2.getDate()) ? 0 : -1;
+                return item1.getDate().isAfter(item2.getDate()) ? 1 : -1;
             } else {
                 return item1.compareTo(item2);
             }

@@ -17,7 +17,6 @@ public class WishItem implements Comparable<WishItem> {
         this.date = LocalDate.now();
     }
 
-    @Override
     public int compareTo(WishItem wishItem){
         return Double.compare(this.price, wishItem.price);
     }
